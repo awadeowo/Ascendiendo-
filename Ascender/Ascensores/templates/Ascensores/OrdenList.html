@@ -1,0 +1,75 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ordenes de Trabajo</title>
+</head>
+<body>
+    
+    <div class="col-xs-12 col-lg-8 mx-auto">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Cliente</td>
+                    <td>Nombre Cliente</td>
+                    <td>Fecha</td>
+                    <td>Hora inicio</td>
+                    <td>Hora termino</td>
+                    <td>ID ascensor</td>
+                    <td>Modelo ascensor</td>
+                    <td>Fallas</td>
+                    <td>Reparaciones</td>
+                    <td>Piezas cambiadas</td>
+                    <td>Receptor Trabajo</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if object_list %}
+                {% for ordendetrabajo in object_list %}
+                <tr>
+                    <td>{{ordendetrabajo.id_orden}}</td>
+                    <td>{{ordendetrabajo.run_cliente}}</td>
+                    <td>{{ordendetrabajo.nombre_cliente}}</td>
+                    <td>{{ordendetrabajo.fecha}}</td>
+                    <td>{{ordendetrabajo.hora_ini}}</td>
+                    <td>{{ordendetrabajo.hora_term}}</td>
+                    <td>{{ordendetrabajo.id_ascensor}}</td>
+                    <td>{{ordendetrabajo.modelo_ascensor}}</td>
+                    <td>{{ordendetrabajo.descripcion_falla}}</td>
+                    <td>{{ordendetrabajo.descripcion_reparacion}}</td>
+                    <td>{{ordendetrabajo.piezas_cambiadas}}</td>
+                    <td>{{ordendetrabajo.nombre_receptor_de_trabajo}}</td>
+
+    <!--
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'PerroModificar' Perrite.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'PerroEliminar' Perrite.id %}">Eliminar</a>
+                    </td>
+                    -->
+                </tr>
+                {% endfor %}
+    
+                {% else %}
+                <h1>No hay registros de Ordenes de Trabajo</h1>
+    
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="col-xs-12 col-lg-8 mx-auto">
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Menu Principal</a>
+        {% if page_obj.has_previous %}
+            <a class="btn btn-secondary"href="?page={{page_obj.previous_page_number}}">Anterior</a>
+        {% endif %}
+    
+        {% if page_obj.has_next %}
+            <a class="btn btn-secondary" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+        {% endif %}
+    </div>  
+
+</body>
+</html>
