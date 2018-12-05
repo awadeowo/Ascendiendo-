@@ -1,12 +1,37 @@
 from django import forms
-from .models import ordendetrabajo
+from .models import ordendetrabajo, cliente
 import datetime
+
+
+class clienteForm(forms.ModelForm):
+    class Meta:
+        model = cliente
+
+        fields = {
+            "run",
+            "nombre",
+            "direccion",
+            "cuidad",
+            "comuna",
+            "telefono",
+            "correo",
+        }
+
+        labels = {
+            'run': 'Run Cliente',
+            'nombre': 'Nombre',
+            'direccion': 'Direccion',
+            'cuidad': 'Ciudad',
+            'comuna': 'Comuna',
+            'telefono': 'Telefono',
+            'correo': 'Correo',
+        }
 
 class ordenTrabajoForm(forms.ModelForm):
     class Meta:
         model = ordendetrabajo
 
-        fields = [
+        fields = {
             "run_cliente",
             "nombre_cliente",
             "fecha",
@@ -18,7 +43,7 @@ class ordenTrabajoForm(forms.ModelForm):
             "descripcion_reparacion",
             "piezas_cambiadas",
             "nombre_receptor_de_trabajo",
-        ]
+        }
 
         labels = {
             'run_cliente': 'Run cliente',
