@@ -8,12 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div class="col-xs-12 col-lg-6 mx-auto">
         <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit">Agregar nueva orden de trabajo</button>
+        <button class="btn btn-success" type="submit">Agregar nuevo Perro</button>
         </form>
+    
     </div>
+
 </body>
 </html>

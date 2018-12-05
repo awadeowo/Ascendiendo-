@@ -7,7 +7,7 @@
     <title>Ordenes de Trabajo</title>
 </head>
 <body>
-
+    
     <div class="col-xs-12 col-lg-8 mx-auto">
         <table class="table table-bordered">
             <thead>
@@ -43,28 +43,33 @@
                     <td>{{ordendetrabajo.piezas_cambiadas}}</td>
                     <td>{{ordendetrabajo.nombre_receptor_de_trabajo}}</td>
 
-
+    <!--
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'PerroModificar' Perrite.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'PerroEliminar' Perrite.id %}">Eliminar</a>
+                    </td>
+                    -->
                 </tr>
                 {% endfor %}
-
+    
                 {% else %}
                 <h1>No hay registros de Ordenes de Trabajo</h1>
-
+    
                 {% endif %}
             </tbody>
         </table>
     </div>
-
+    
     <div class="col-xs-12 col-lg-8 mx-auto">
         <a class="btn btn-primary" href="{% url 'home' %}">Volver al Menu Principal</a>
         {% if page_obj.has_previous %}
             <a class="btn btn-secondary"href="?page={{page_obj.previous_page_number}}">Anterior</a>
         {% endif %}
-
+    
         {% if page_obj.has_next %}
             <a class="btn btn-secondary" href="?page={{page_obj.next_page_number}}">Siguiente</a>
         {% endif %}
-    </div>
+    </div>  
 
 </body>
 </html>
