@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ordenes de Trabajo</title>
     <link rel="stylesheet" href="{% static 'listar.css' %} ">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <title>Ordenes de Trabajo</title>
 </head>
 <body>
-    
+
     <div class="col-xs-12 col-lg-8 mx-auto">
         <table class="table table-bordered">
             <thead>
@@ -53,25 +53,25 @@
                     -->
                 </tr>
                 {% endfor %}
-    
+
                 {% else %}
                 <h1>No hay registros de Ordenes de Trabajo</h1>
-    
+
                 {% endif %}
             </tbody>
         </table>
     </div>
-    
+
     <div class="col-xs-12 col-lg-8 mx-auto">
         <a class="btn btn-primary" href="{% url 'home' %}">Volver al Menu Principal</a>
         {% if page_obj.has_previous %}
             <a class="btn btn-secondary"href="?page={{page_obj.previous_page_number}}">Anterior</a>
         {% endif %}
-    
+
         {% if page_obj.has_next %}
             <a class="btn btn-secondary" href="?page={{page_obj.next_page_number}}">Siguiente</a>
         {% endif %}
-    </div>  
+    </div>
 
 </body>
 </html>

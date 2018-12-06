@@ -1,6 +1,31 @@
 from django import forms
-from .models import ordendetrabajo
+from .models import ordendetrabajo, cliente
 import datetime
+
+
+class clienteForm(forms.ModelForm):
+    class Meta:
+        model = cliente
+
+        fields = {
+            "run",
+            "nombre",
+            "direccion",
+            "cuidad",
+            "comuna",
+            "telefono",
+            "correo",
+        }
+
+        labels = {
+            'run': 'Run Cliente',
+            'nombre': 'Nombre',
+            'direccion': 'Direccion',
+            'cuidad': 'Ciudad',
+            'comuna': 'Comuna',
+            'telefono': 'Telefono',
+            'correo': 'Correo',
+        }
 
 class ordenTrabajoForm(forms.ModelForm):
     class Meta:

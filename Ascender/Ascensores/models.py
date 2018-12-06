@@ -24,11 +24,3 @@ class ordendetrabajo(models.Model):
     descripcion_reparacion = models.CharField(max_length=300, null=True)
     piezas_cambiadas = models.CharField(max_length=200, null=True)
     nombre_receptor_de_trabajo = models.CharField(max_length=30, null=False)
-
-#class tipoDeUsuario(models.Model):
-    #usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    #email_usuario = models.CharField(max_length=40)
-    #username = models.CharField(max_length=50, primary_key=True)
-    #password = models.CharField(max_length=40, null=False)
-    #tipo_usuario = ((1,'administrador'),(2, 'adoptante'))
-    #tipo = models.IntegerField(choices=tipo_usuario,default=2)
