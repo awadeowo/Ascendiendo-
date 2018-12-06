@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'crispy_forms',
+    'pwa'
 ]
 
 MIDDLEWARE = [
@@ -154,5 +155,3 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, username',
 }
-
-

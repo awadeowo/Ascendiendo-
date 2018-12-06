@@ -68,4 +68,8 @@ class ordenTrabajoForm(forms.ModelForm):
             'fecha': forms.SelectDateWidget(years=BIRTH_YEAR_CHOICES),
             'hora_ini': forms.TimeInput(format="HH:MM:SS"),
             'hora_term': forms.TimeInput(format="HH:MM:SS"),
+            'run_cliente': forms.Select(attrs={'class':'form-control'}),
         }
+        def init(self, args, **kwargs):
+            super(ordenTrabajoForm, self).init(args, **kwargs)
+            self.fields['run_cliente'].queryset=cliente.objects.all()
