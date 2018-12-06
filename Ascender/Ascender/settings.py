@@ -129,6 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, 'Ascensores\static'),
+  ]
 
 AUTHENTICATION_BACKENDS  = (
     'django.contrib.auth.backends.ModelBackend',
@@ -154,5 +157,3 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, username',
 }
-
-

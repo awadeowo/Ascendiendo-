@@ -1,25 +1,46 @@
-{% extends 'registro/baseRegistro.html' %}
-{% load static %}
-{% block content %}
-{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  {% extends 'registro/baseRegistro.html' %}
+  {% load static %}
+  {% block content %}
+  {% load crispy_forms_tags %}
 
+  <head>
+     {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{%static 'wena.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>login</title>
+  </head>
 
-<h1 style="color: #76D7C4">Tecnico Ascensores Login</h1>
-{% if user.is_authenticated %}
-<h1>Tu ya estas Logeado en el sitio</h1>
-<a href="{% url 'logout' %}">Logout</a>
+  <body>
+    <div class="container">
+      <center><img  src="{% static 'uwu.png' %}" alt=""></center>
+      <h1 style="color: #76D7C4">Tecnico Ascensores Login</h1>
 
-{% else %}
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <br>
-    <button class="btn btn-primary" type="submit">Ingresar al sitio</button>
-    <a class="btn btn-primary" href="{% url 'registrar' %}">Nuevo Usuario</a>
-</form>
-<br>
-<p><strong>-- Ingresar con Redes Sociales --</strong></p>
-<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-{% endif %}
+      {% if user.is_authenticated %}
+      <h1>Tu ya estas Logeado en el sitio</h1>
+      <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <form method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <br>
+          <button class="btn btn-primary" type="submit">Ingresar al sitio</button>
+          <a class="btn btn-primary" href="{% url 'registrar' %}">Nuevo Usuario</a>
+      </form>
+      <br>
+      <p><strong>-- Ingresar con Redes Sociales --</strong></p>
+      <a href="{% url 'social:begin' 'facebook' %}" class="fb btn">
+        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+      </a>
+      {% endif %}
 
-{% endblock %}
+      {% endblock %}
+
+    </div>
+  </body>
