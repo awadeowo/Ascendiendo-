@@ -36,8 +36,14 @@
       </form>
       <br>
       <p><strong>-- Ingresar con Redes Sociales --</strong></p>
+<<<<<<< HEAD
       <a class="fab fa-facebook btn btn-primary" href="{% provider_login_url "facebook" method="js_sdk" %}">  Ingresar con Facebook</a>
       <br>
+=======
+      <a href="{% url 'social:begin' 'facebook' %}" class="fb btn">
+        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+      </a>
+>>>>>>> 7a5cffc4109418b0b7ea965699a83af249c5bf37
       {% endif %}
 
       {% endblock %}
