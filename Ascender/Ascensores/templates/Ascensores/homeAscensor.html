@@ -1,13 +1,33 @@
 <html lang="es">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{%static 'wena.css' %} ">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
     <title>Home Ascensor</title>
 </head>
 <body>
-    <h1>ascensor qlo feo   </h1>
-    <h1>correo: {{user.email}}</h1>
-    <h1>usuario: {{user.username}}</h1>
+  <div class="container">
+
+
+    {%if user.is_authenticated%}
+      <h2>Bienvenido {{ user.first_name }}{{user.username}}</h2>
+      <center><img  src="{% static 'uwu.png' %}" alt=""></center>
+      <a class="btn btn-primary" href="{% url 'OrdenList' %}">Lista de Ordenes</a>
+      <a class="btn btn-primary" href="{% url 'ClienteList' %}">Lista de Clientes</a>
+      <a href="{% url 'logout' %}">Logout</a>
+
+    {%else%}
+      <center><img  src="{% static 'uwu.png' %}" alt=""></center>
+      <h1>Bienvenido</h1>
+      <h2>Por favor haz click en el boton para iniciar sesion</h2>
+      <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesion</a>
+
+    </div>
+    {%endif%}
+  </div>
+
 </body>
 </html>
