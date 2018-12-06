@@ -12,6 +12,7 @@
 
     <div class="col-xs-12 col-lg-8 mx-auto">
         <table class="table table-bordered">
+          <h1>Ordenes de trabajo</h1>
             <thead>
                 <tr>
                     <td>ID</td>
@@ -31,6 +32,7 @@
             <tbody>
                 {% if object_list %}
                 {% for ordendetrabajo in object_list %}
+                {% ifequal ordendetrabajo.usuario|stringformat:"s" request.user.email%}
                 <tr>
                     <td>{{ordendetrabajo.id_orden}}</td>
                     <td>{{ordendetrabajo.run_cliente}}</td>
@@ -45,13 +47,14 @@
                     <td>{{ordendetrabajo.piezas_cambiadas}}</td>
                     <td>{{ordendetrabajo.nombre_receptor_de_trabajo}}</td>
 
-    <!--
+
                     <td>
-                        <a class="btn btn-primary" href="{% url 'PerroModificar' Perrite.id %}">Editar</a>
-                        <a class="btn btn-danger" href="{% url 'PerroEliminar' Perrite.id %}">Eliminar</a>
+                      <a class="btn btn-primary" href="{% url 'OrdenModificar' %}">Realizar orden</a>
+
                     </td>
-                    -->
+
                 </tr>
+                {% endifequal %}
                 {% endfor %}
 
                 {% else %}

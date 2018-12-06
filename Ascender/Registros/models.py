@@ -9,7 +9,7 @@ class CustomUserManager(UserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError("Usuario debe ingresar su Email")
-        
+
         user = self.model(
             email = self.normalize_email(email),
             **extra_fields
@@ -43,7 +43,7 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.run
+        return self.email
 
     def has_perm(self, perm, obj=None):
         return True

@@ -1,7 +1,7 @@
 from django import forms
 from .models import ordendetrabajo, cliente
 import datetime
-
+from Registros.models import *
 
 class clienteForm(forms.ModelForm):
     class Meta:
@@ -15,6 +15,7 @@ class clienteForm(forms.ModelForm):
             "comuna",
             "telefono",
             "correo",
+            "usuario",
         }
 
         labels = {
@@ -25,7 +26,11 @@ class clienteForm(forms.ModelForm):
             'comuna': 'Comuna',
             'telefono': 'Telefono',
             'correo': 'Correo',
+            'usuario': 'Usuario'
         }
+        def init(self, args, **kwargs):
+            super(clienteForm, self).init(args, **kwargs)
+            self.fields['usuario'].queryset=CustomUser.objects.all()
 
 class ordenTrabajoForm(forms.ModelForm):
     class Meta:
@@ -43,7 +48,9 @@ class ordenTrabajoForm(forms.ModelForm):
             "descripcion_reparacion",
             "piezas_cambiadas",
             "nombre_receptor_de_trabajo",
+            "usuario",
         ]
+
 
         labels = {
             'run_cliente': 'Run cliente',
@@ -57,6 +64,7 @@ class ordenTrabajoForm(forms.ModelForm):
             'descripcion_reparacion': 'Reparaciones',
             'piezas_cambiadas': 'Piezas cambiadas',
             'nombre_receptor_de_trabajo': 'Nombre Receptor',
+            'usuario': 'usuario'
         }
 
         now = datetime.datetime.now()
@@ -67,3 +75,7 @@ class ordenTrabajoForm(forms.ModelForm):
             'hora_ini': forms.TimeInput(format="HH:MM:SS"),
             'hora_term': forms.TimeInput(format="HH:MM:SS"),
         }
+        def init(self, args, **kwargs):
+            super(ordenTrabajoForm, self).init(args, **kwargs)
+            self.fields['run_cliente'].queryset=cliente.objects.all()
+            self.fields['usuario'].queryset=CustomUser.objects.all()

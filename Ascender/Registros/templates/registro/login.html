@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+
 <html lang="es" dir="ltr">
   {% extends 'registro/baseRegistro.html' %}
   {% load static %}
   {% block content %}
   {% load crispy_forms_tags %}
+  {% load socialaccount %}
+  {% providers_media_js %}
 
   <head>
     <meta charset="utf-8">
@@ -34,9 +36,8 @@
       </form>
       <br>
       <p><strong>-- Ingresar con Redes Sociales --</strong></p>
-      <!-- <a href="{% url 'social:begin' 'facebook' %}" class="fb btn">
-        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-      </a> -->
+      <a class="fab fa-facebook btn btn-primary" href="{% provider_login_url "facebook" method="js_sdk" %}">  Ingresar con Facebook</a>
+      <br>
       {% endif %}
 
       {% endblock %}

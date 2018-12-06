@@ -9,9 +9,7 @@
     <title>Clientes</title>
 </head>
 <body>
-{% if user.is_authenticated and user.is_admin == True%}
   <div class="container">
-
     <div class="btn">
       <h2>Lista de clientes</h2>
         <table class="table table-bordered">
@@ -29,19 +27,21 @@
             </thead>
             <tbody>
                 {% if object_list %}
+
                 {% for cliente in object_list %}
+                {% ifequal cliente.usuario|stringformat:"s" request.user.email%}
                 <tr>
                   <td>{{cliente.run}}</td>
                   <td>{{cliente.nombre}}</td>
-                  <td>{{ cliente.direccion}}</td>
-                  <td>{{ cliente.cuidad}}</td>
-                  <td>{{ cliente.comuna}}</td>
-                  <td>{{ cliente.telefono}}</td>
-                  <td>{{ cliente.correo}}</td>
-                  <td>{{ cliente.usuario}}</td>
+                  <td>{{cliente.direccion}}</td>
+                  <td>{{cliente.cuidad}}</td>
+                  <td>{{cliente.comuna}}</td>
+                  <td>{{cliente.telefono}}</td>
+                  <td>{{cliente.correo}}</td>
+                  <td>{{cliente.usuario}}</td>
                 </tr>
+                {% endifequal %}
                 {% endfor %}
-
                 {% else %}
                 <h1>No hay registros de Clientes</h1>
 
@@ -59,11 +59,6 @@
             <a class="btn btn-secondary" href="?page={{page_obj.next_page_number}}">Siguiente</a>
         {% endif %}
     </div>
-
   </div>
-{% else %}
-  <h1>Lo lamentamos, usted no dispone de los privilegio para ingresar a este sitio, por favor vuelva a la pagina anterior</h1>
-  <a href="registro/login">Volver</a>
-{% endif %}
 </body>
 </html>

@@ -1,4 +1,5 @@
 from django.db import models
+from Registros.models import *
 
 # Create your models here.
 
@@ -10,10 +11,14 @@ class cliente(models.Model):
     comuna = models.CharField(max_length=30, null=False)
     telefono = models.CharField(max_length=30, null=False)
     correo = models.CharField(max_length=30, null=False)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def str(self):
+        return self.run
 
 class ordendetrabajo(models.Model):
     id_orden = models.AutoField(max_length=6, primary_key=True)
-    run_cliente = models.CharField(max_length=10)
+    run_cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
     nombre_cliente = models.CharField(max_length=20, null=False)
     fecha = models.DateField(null=False)
     hora_ini = models.DateTimeField(null=False)
@@ -24,3 +29,4 @@ class ordendetrabajo(models.Model):
     descripcion_reparacion = models.CharField(max_length=300, null=True)
     piezas_cambiadas = models.CharField(max_length=200, null=True)
     nombre_receptor_de_trabajo = models.CharField(max_length=30, null=False)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

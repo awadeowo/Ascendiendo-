@@ -10,6 +10,7 @@
     <title>Clientes</title>
 </head>
 <body>
+  {% if user.is_authenticated and user.is_admin == True%}
   <div class="container">
     <div class="col-xs-12 col-lg-6 mx-auto">
       <center><h2>CREACIÓN DE CLIENTES</h2></center>
@@ -20,6 +21,9 @@
         </form>
     </div>
   </div>
-
+  {% else %}
+  <h1>Lo lamentamos, usted no dispone de los privilegio para ingresar a este sitio, por favor vuelva a la pagina anterior</h1>
+  <a href="registro/login">Volver</a>
+  {% endif %}
 </body>
 </html>
