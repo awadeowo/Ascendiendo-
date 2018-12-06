@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.views.generic.edit import FormView
-from .models import ordendetrabajo, cliente
-from .forms import ordenTrabajoForm, clienteForm
+from .models import ordendetrabajo
+from .forms import ordenTrabajoForm
 
 # Create your views here.
 
@@ -22,13 +22,4 @@ class OrdenCreate(CreateView):
     template_name = 'Ascensores/OrdenCreate.html'
     success_url = reverse_lazy('OrdenList')
 
-class ClienteList(ListView):
-    model = cliente
-    template_name = 'Admin/listarClientes.html'
-    paginate_by = 3
 
-class ClienteCreate(CreateView):
-    model = cliente
-    form_class = clienteForm
-    template_name = 'Admin/CrearClientes.html'
-    success_url = reverse_lazy('ClienteList')

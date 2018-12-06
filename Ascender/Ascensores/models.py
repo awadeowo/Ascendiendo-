@@ -13,7 +13,7 @@ class cliente(models.Model):
 
 class ordendetrabajo(models.Model):
     id_orden = models.AutoField(max_length=6, primary_key=True)
-    run_cliente =  models.ForeignKey(cliente,on_delete=models.CASCADE)
+    run_cliente = models.CharField(max_length=10)
     nombre_cliente = models.CharField(max_length=20, null=False)
     fecha = models.DateField(null=False)
     hora_ini = models.DateTimeField(null=False)
@@ -24,4 +24,11 @@ class ordendetrabajo(models.Model):
     descripcion_reparacion = models.CharField(max_length=300, null=True)
     piezas_cambiadas = models.CharField(max_length=200, null=True)
     nombre_receptor_de_trabajo = models.CharField(max_length=30, null=False)
-    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+#class tipoDeUsuario(models.Model):
+    #usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    #email_usuario = models.CharField(max_length=40)
+    #username = models.CharField(max_length=50, primary_key=True)
+    #password = models.CharField(max_length=40, null=False)
+    #tipo_usuario = ((1,'administrador'),(2, 'adoptante'))
+    #tipo = models.IntegerField(choices=tipo_usuario,default=2)

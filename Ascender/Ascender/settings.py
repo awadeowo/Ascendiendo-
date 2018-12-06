@@ -37,12 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'Ascensores',
     'Registros',
     'rest_framework',
     'social_django',
     'crispy_forms',
-    'pwa'
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,7 @@ TEMPLATES = [
 
                 'social_django.context_processors.backends',  # <--
                 'social_django.context_processors.login_redirect', # <--
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -130,9 +135,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'Ascensores\static'),
-  ]
 
 AUTHENTICATION_BACKENDS  = (
     'django.contrib.auth.backends.ModelBackend',
@@ -141,7 +143,10 @@ AUTHENTICATION_BACKENDS  = (
     'social_core.backends.google.GoogleOAuth2',  # for Google authentication
     'social_core.backends.github.GithubOAuth2',  # for Github authentication
     'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+    'allauth.account.auth_backends.AuthenticationBackend',
     )
+
+SITE_ID = 1
 
 AUTH_USER_MODEL = "Registros.CustomUser"
 
@@ -158,3 +163,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, username',
 }
+
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+
+
